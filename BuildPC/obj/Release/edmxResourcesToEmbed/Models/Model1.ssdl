@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DOANCNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CasePC">
+    <Key>
+      <PropertyRef Name="MaCase" />
+    </Key>
+    <Property Name="MaCase" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ChieuDai" Type="int" Nullable="false" />
+    <Property Name="ChieuRong" Type="int" Nullable="false" />
+    <Property Name="ChieuCao" Type="int" Nullable="false" />
+    <Property Name="HangSX" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Giaban" Type="int" Nullable="false" />
+    <Property Name="Diem" Type="int" Nullable="false" />
+    <Property Name="DanhGia" Type="float" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="320" />
+  </EntityType>
+  <EntityType Name="CauHinhPC">
+    <Key>
+      <PropertyRef Name="MaCH" />
+    </Key>
+    <Property Name="MaCH" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MaCPU" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MaMain" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MaRam" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MaRam2" Type="char" MaxLength="6" />
+    <Property Name="MaHDD" Type="char" MaxLength="6" />
+    <Property Name="MaHDD2" Type="char" MaxLength="6" />
+    <Property Name="MaCase" Type="char" MaxLength="6" />
+    <Property Name="MaNguon" Type="char" MaxLength="6" />
+    <Property Name="MaGPU" Type="char" MaxLength="6" />
+    <Property Name="Diem" Type="int" Nullable="false" />
+    <Property Name="Giaban" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CPU">
+    <Key>
+      <PropertyRef Name="MaCPU" />
+    </Key>
+    <Property Name="MaCPU" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="HangSX" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Socket" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SoNhan" Type="int" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="XungNhip" Type="float" Nullable="false" />
+    <Property Name="Dohoa" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="DongCPU" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Cache" Type="int" Nullable="false" />
+    <Property Name="Giaban" Type="int" />
+    <Property Name="Diennang" Type="int" Nullable="false" />
+    <Property Name="Diem" Type="int" Nullable="false" />
+    <Property Name="DanhGia" Type="float" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="320" />
+  </EntityType>
+  <EntityType Name="DanhGia">
+    <Key>
+      <PropertyRef Name="MaDanhGia" />
+    </Key>
+    <Property Name="MaDanhGia" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MaUser" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TGDanhGia" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="DiemTong" Type="float" Nullable="false" />
+    <Property Name="DiemCPU" Type="float" />
+    <Property Name="MaCPU" Type="char" MaxLength="6" />
+    <Property Name="DiemGPU" Type="float" />
+    <Property Name="MaGPU" Type="char" MaxLength="6" />
+    <Property Name="DiemMain" Type="float" />
+    <Property Name="MaMain" Type="char" MaxLength="6" />
+    <Property Name="DiemHDD" Type="float" />
+    <Property Name="MaHDD" Type="char" MaxLength="6" />
+    <Property Name="DiemRam" Type="float" />
+    <Property Name="MaRam" Type="char" MaxLength="6" />
+    <Property Name="Binhluan" Type="ntext" />
+  </EntityType>
+  <EntityType Name="DongCPU">
+    <Key>
+      <PropertyRef Name="MaDongCPU" />
+    </Key>
+    <Property Name="MaDongCPU" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TenDongCPU" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GPU">
+    <Key>
+      <PropertyRef Name="MaGPU" />
+    </Key>
+    <Property Name="MaGPU" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="HangSX" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="HangChipset" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="VGA" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PCI" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="BoNho" Type="int" Nullable="false" />
+    <Property Name="LoaiRam" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="DienNang" Type="int" />
+    <Property Name="Diem" Type="int" Nullable="false" />
+    <Property Name="DanhGia" Type="float" Nullable="false" />
+    <Property Name="Giaban" Type="int" />
+    <Property Name="URL" Type="nvarchar" MaxLength="320" />
+  </EntityType>
+  <EntityType Name="HangSX">
+    <Key>
+      <PropertyRef Name="MaHSX" />
+    </Key>
+    <Property Name="MaHSX" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TenHang" Type="nvarchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HDD">
+    <Key>
+      <PropertyRef Name="MaHDD" />
+    </Key>
+    <Property Name="MaHDD" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="LoaiOCung" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="HangSX" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="DungLuong" Type="int" Nullable="false" />
+    <Property Name="ChuanKetNoi" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="TocDoDoc" Type="int" />
+    <Property Name="TocDoGhi" Type="int" />
+    <Property Name="Diem" Type="int" Nullable="false" />
+    <Property Name="DanhGia" Type="float" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="320" />
+    <Property Name="Giaban" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoaiRam">
+    <Key>
+      <PropertyRef Name="MaLoaiRam" />
+    </Key>
+    <Property Name="MaLoaiRam" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TenLoaiRam" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="DongRam" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="BusRam" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mainboard">
+    <Key>
+      <PropertyRef Name="MaMain" />
+    </Key>
+    <Property Name="MaMain" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="HangSX" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Socket" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Chipset" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RamToiDa" Type="int" Nullable="false" />
+    <Property Name="PCI" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SoKheRam" Type="int" Nullable="false" />
+    <Property Name="Giaban" Type="int" Nullable="false" />
+    <Property Name="LoaiRamToiDa" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="DanhGia" Type="float" Nullable="false" />
+    <Property Name="Diem" Type="int" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="320" />
+  </EntityType>
+  <EntityType Name="Nguon">
+    <Key>
+      <PropertyRef Name="MaNguon" />
+    </Key>
+    <Property Name="MaNguon" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="HangSX" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="CongSuat" Type="int" Nullable="false" />
+    <Property Name="HieuSuat" Type="int" />
+    <Property Name="Giaban" Type="int" Nullable="false" />
+    <Property Name="Diem" Type="int" Nullable="false" />
+    <Property Name="Danhgia" Type="float" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="320" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhanMem">
+    <Key>
+      <PropertyRef Name="MaPM" />
+    </Key>
+    <Property Name="MaPM" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TenPM" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="CHToiThieu" Type="char" MaxLength="6" />
+    <Property Name="CHKhuyenNghi" Type="char" MaxLength="6" />
+    <Property Name="LoaiPM" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="MaPQ" />
+    </Key>
+    <Property Name="MaPQ" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TenPQ" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="CodePQ" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RAM">
+    <Key>
+      <PropertyRef Name="MaRam" />
+    </Key>
+    <Property Name="MaRam" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="LoaiRam" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TocDoBus" Type="int" Nullable="false" />
+    <Property Name="DungLuong" Type="int" Nullable="false" />
+    <Property Name="HangSX" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Giaban" Type="int" Nullable="false" />
+    <Property Name="Diem" Type="int" Nullable="false" />
+    <Property Name="DanhGia" Type="float" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="320" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="MaUser" />
+    </Key>
+    <Property Name="MaUser" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PhanQuyen" Type="char" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CasePC_HangSX">
+    <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
+    <End Role="CasePC" Type="Self.CasePC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangSX">
+        <PropertyRef Name="MaHSX" />
+      </Principal>
+      <Dependent Role="CasePC">
+        <PropertyRef Name="HangSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHinhPC_CasePC">
+    <End Role="CasePC" Type="Self.CasePC" Multiplicity="0..1" />
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CasePC">
+        <PropertyRef Name="MaCase" />
+      </Principal>
+      <Dependent Role="CauHinhPC">
+        <PropertyRef Name="MaCase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHinhPC_CPU">
+    <End Role="CPU" Type="Self.CPU" Multiplicity="1" />
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CPU">
+        <PropertyRef Name="MaCPU" />
+      </Principal>
+      <Dependent Role="CauHinhPC">
+        <PropertyRef Name="MaCPU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHinhPC_GPU">
+    <End Role="GPU" Type="Self.GPU" Multiplicity="0..1" />
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPU">
+        <PropertyRef Name="MaGPU" />
+      </Principal>
+      <Dependent Role="CauHinhPC">
+        <PropertyRef Name="MaGPU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHinhPC_HDD">
+    <End Role="HDD" Type="Self.HDD" Multiplicity="0..1" />
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HDD">
+        <PropertyRef Name="MaHDD" />
+      </Principal>
+      <Dependent Role="CauHinhPC">
+        <PropertyRef Name="MaHDD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHinhPC_HDD1">
+    <End Role="HDD" Type="Self.HDD" Multiplicity="0..1" />
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HDD">
+        <PropertyRef Name="MaHDD" />
+      </Principal>
+      <Dependent Role="CauHinhPC">
+        <PropertyRef Name="MaHDD2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHinhPC_Mainboard">
+    <End Role="Mainboard" Type="Self.Mainboard" Multiplicity="1" />
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mainboard">
+        <PropertyRef Name="MaMain" />
+      </Principal>
+      <Dependent Role="CauHinhPC">
+        <PropertyRef Name="MaMain" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHinhPC_Nguon">
+    <End Role="Nguon" Type="Self.Nguon" Multiplicity="0..1" />
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nguon">
+        <PropertyRef Name="MaNguon" />
+      </Principal>
+      <Dependent Role="CauHinhPC">
+        <PropertyRef Name="MaNguon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CauHinhPC_RAM">
+    <End Role="RAM" Type="Self.RAM" Multiplicity="1" />
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RAM">
+        <PropertyRef Name="MaRam" />
+      </Principal>
+      <Dependent Role="CauHinhPC">
+        <PropertyRef Name="MaRam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CPU_DongCPU">
+    <End Role="DongCPU" Type="Self.DongCPU" Multiplicity="1" />
+    <End Role="CPU" Type="Self.CPU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DongCPU">
+        <PropertyRef Name="MaDongCPU" />
+      </Principal>
+      <Dependent Role="CPU">
+        <PropertyRef Name="DongCPU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CPU_HangSX">
+    <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
+    <End Role="CPU" Type="Self.CPU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangSX">
+        <PropertyRef Name="MaHSX" />
+      </Principal>
+      <Dependent Role="CPU">
+        <PropertyRef Name="HangSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DanhGia_GPU">
+    <End Role="GPU" Type="Self.GPU" Multiplicity="0..1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GPU">
+        <PropertyRef Name="MaGPU" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="MaGPU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DanhGia_HDD">
+    <End Role="HDD" Type="Self.HDD" Multiplicity="0..1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HDD">
+        <PropertyRef Name="MaHDD" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="MaHDD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DanhGia_Mainboard">
+    <End Role="Mainboard" Type="Self.Mainboard" Multiplicity="0..1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mainboard">
+        <PropertyRef Name="MaMain" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="MaMain" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DanhGia_RAM">
+    <End Role="RAM" Type="Self.RAM" Multiplicity="0..1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RAM">
+        <PropertyRef Name="MaRam" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="MaRam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DanhGia_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="DanhGia" Type="Self.DanhGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="MaUser" />
+      </Principal>
+      <Dependent Role="DanhGia">
+        <PropertyRef Name="MaUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPU_HangSX">
+    <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
+    <End Role="GPU" Type="Self.GPU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangSX">
+        <PropertyRef Name="MaHSX" />
+      </Principal>
+      <Dependent Role="GPU">
+        <PropertyRef Name="HangSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GPU_HangSX1">
+    <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
+    <End Role="GPU" Type="Self.GPU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangSX">
+        <PropertyRef Name="MaHSX" />
+      </Principal>
+      <Dependent Role="GPU">
+        <PropertyRef Name="HangChipset" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HDD_HangSX">
+    <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
+    <End Role="HDD" Type="Self.HDD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangSX">
+        <PropertyRef Name="MaHSX" />
+      </Principal>
+      <Dependent Role="HDD">
+        <PropertyRef Name="HangSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mainboard_HangSX">
+    <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
+    <End Role="Mainboard" Type="Self.Mainboard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangSX">
+        <PropertyRef Name="MaHSX" />
+      </Principal>
+      <Dependent Role="Mainboard">
+        <PropertyRef Name="HangSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mainboard_LoaiRam">
+    <End Role="LoaiRam" Type="Self.LoaiRam" Multiplicity="1" />
+    <End Role="Mainboard" Type="Self.Mainboard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiRam">
+        <PropertyRef Name="MaLoaiRam" />
+      </Principal>
+      <Dependent Role="Mainboard">
+        <PropertyRef Name="LoaiRamToiDa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nguon_HangSX">
+    <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
+    <End Role="Nguon" Type="Self.Nguon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangSX">
+        <PropertyRef Name="MaHSX" />
+      </Principal>
+      <Dependent Role="Nguon">
+        <PropertyRef Name="HangSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhanMem_CauHinhPC">
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="0..1" />
+    <End Role="PhanMem" Type="Self.PhanMem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CauHinhPC">
+        <PropertyRef Name="MaCH" />
+      </Principal>
+      <Dependent Role="PhanMem">
+        <PropertyRef Name="CHToiThieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhanMem_CauHinhPC1">
+    <End Role="CauHinhPC" Type="Self.CauHinhPC" Multiplicity="0..1" />
+    <End Role="PhanMem" Type="Self.PhanMem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CauHinhPC">
+        <PropertyRef Name="MaCH" />
+      </Principal>
+      <Dependent Role="PhanMem">
+        <PropertyRef Name="CHKhuyenNghi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAM_HangSX">
+    <End Role="HangSX" Type="Self.HangSX" Multiplicity="1" />
+    <End Role="RAM" Type="Self.RAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangSX">
+        <PropertyRef Name="MaHSX" />
+      </Principal>
+      <Dependent Role="RAM">
+        <PropertyRef Name="HangSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAM_LoaiRam">
+    <End Role="LoaiRam" Type="Self.LoaiRam" Multiplicity="1" />
+    <End Role="RAM" Type="Self.RAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiRam">
+        <PropertyRef Name="MaLoaiRam" />
+      </Principal>
+      <Dependent Role="RAM">
+        <PropertyRef Name="LoaiRam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_PhanQuyen">
+    <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanQuyen">
+        <PropertyRef Name="MaPQ" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="PhanQuyen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DOANCNModelStoreContainer">
+    <EntitySet Name="CasePC" EntityType="Self.CasePC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CauHinhPC" EntityType="Self.CauHinhPC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CPU" EntityType="Self.CPU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhGia" EntityType="Self.DanhGia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DongCPU" EntityType="Self.DongCPU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GPU" EntityType="Self.GPU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HangSX" EntityType="Self.HangSX" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HDD" EntityType="Self.HDD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiRam" EntityType="Self.LoaiRam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mainboard" EntityType="Self.Mainboard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nguon" EntityType="Self.Nguon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanMem" EntityType="Self.PhanMem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RAM" EntityType="Self.RAM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CasePC_HangSX" Association="Self.FK_CasePC_HangSX">
+      <End Role="HangSX" EntitySet="HangSX" />
+      <End Role="CasePC" EntitySet="CasePC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHinhPC_CasePC" Association="Self.FK_CauHinhPC_CasePC">
+      <End Role="CasePC" EntitySet="CasePC" />
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHinhPC_CPU" Association="Self.FK_CauHinhPC_CPU">
+      <End Role="CPU" EntitySet="CPU" />
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHinhPC_GPU" Association="Self.FK_CauHinhPC_GPU">
+      <End Role="GPU" EntitySet="GPU" />
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHinhPC_HDD" Association="Self.FK_CauHinhPC_HDD">
+      <End Role="HDD" EntitySet="HDD" />
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHinhPC_HDD1" Association="Self.FK_CauHinhPC_HDD1">
+      <End Role="HDD" EntitySet="HDD" />
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHinhPC_Mainboard" Association="Self.FK_CauHinhPC_Mainboard">
+      <End Role="Mainboard" EntitySet="Mainboard" />
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHinhPC_Nguon" Association="Self.FK_CauHinhPC_Nguon">
+      <End Role="Nguon" EntitySet="Nguon" />
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CauHinhPC_RAM" Association="Self.FK_CauHinhPC_RAM">
+      <End Role="RAM" EntitySet="RAM" />
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CPU_DongCPU" Association="Self.FK_CPU_DongCPU">
+      <End Role="DongCPU" EntitySet="DongCPU" />
+      <End Role="CPU" EntitySet="CPU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CPU_HangSX" Association="Self.FK_CPU_HangSX">
+      <End Role="HangSX" EntitySet="HangSX" />
+      <End Role="CPU" EntitySet="CPU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DanhGia_GPU" Association="Self.FK_DanhGia_GPU">
+      <End Role="GPU" EntitySet="GPU" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DanhGia_HDD" Association="Self.FK_DanhGia_HDD">
+      <End Role="HDD" EntitySet="HDD" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DanhGia_Mainboard" Association="Self.FK_DanhGia_Mainboard">
+      <End Role="Mainboard" EntitySet="Mainboard" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DanhGia_RAM" Association="Self.FK_DanhGia_RAM">
+      <End Role="RAM" EntitySet="RAM" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DanhGia_User" Association="Self.FK_DanhGia_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="DanhGia" EntitySet="DanhGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPU_HangSX" Association="Self.FK_GPU_HangSX">
+      <End Role="HangSX" EntitySet="HangSX" />
+      <End Role="GPU" EntitySet="GPU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GPU_HangSX1" Association="Self.FK_GPU_HangSX1">
+      <End Role="HangSX" EntitySet="HangSX" />
+      <End Role="GPU" EntitySet="GPU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HDD_HangSX" Association="Self.FK_HDD_HangSX">
+      <End Role="HangSX" EntitySet="HangSX" />
+      <End Role="HDD" EntitySet="HDD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mainboard_HangSX" Association="Self.FK_Mainboard_HangSX">
+      <End Role="HangSX" EntitySet="HangSX" />
+      <End Role="Mainboard" EntitySet="Mainboard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mainboard_LoaiRam" Association="Self.FK_Mainboard_LoaiRam">
+      <End Role="LoaiRam" EntitySet="LoaiRam" />
+      <End Role="Mainboard" EntitySet="Mainboard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nguon_HangSX" Association="Self.FK_Nguon_HangSX">
+      <End Role="HangSX" EntitySet="HangSX" />
+      <End Role="Nguon" EntitySet="Nguon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhanMem_CauHinhPC" Association="Self.FK_PhanMem_CauHinhPC">
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+      <End Role="PhanMem" EntitySet="PhanMem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhanMem_CauHinhPC1" Association="Self.FK_PhanMem_CauHinhPC1">
+      <End Role="CauHinhPC" EntitySet="CauHinhPC" />
+      <End Role="PhanMem" EntitySet="PhanMem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAM_HangSX" Association="Self.FK_RAM_HangSX">
+      <End Role="HangSX" EntitySet="HangSX" />
+      <End Role="RAM" EntitySet="RAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAM_LoaiRam" Association="Self.FK_RAM_LoaiRam">
+      <End Role="LoaiRam" EntitySet="LoaiRam" />
+      <End Role="RAM" EntitySet="RAM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_PhanQuyen" Association="Self.FK_User_PhanQuyen">
+      <End Role="PhanQuyen" EntitySet="PhanQuyen" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

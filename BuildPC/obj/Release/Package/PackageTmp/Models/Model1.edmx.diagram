@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7ff08265523d40cca64afc0827a361ba" Name="Diagram1">
+        <EntityTypeShape EntityType="DOANCNModel.CasePC" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.CauHinhPC" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.CPU" Width="1.5" PointX="6" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.DanhGia" Width="1.5" PointX="8.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.DongCPU" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.GPU" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.HangSX" Width="1.5" PointX="0.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.HDD" Width="1.5" PointX="3" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.LoaiRam" Width="1.5" PointX="6.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.Mainboard" Width="1.5" PointX="9" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.Nguon" Width="1.5" PointX="3" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.PhanMem" Width="1.5" PointX="7.5" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.PhanQuyen" Width="1.5" PointX="3.75" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.RAM" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DOANCNModel.User" Width="1.5" PointX="6" PointY="32" IsExpanded="true" />
+        <AssociationConnector Association="DOANCNModel.FK_CasePC_HangSX" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CauHinhPC_CasePC" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CauHinhPC_CPU" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CauHinhPC_GPU" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CauHinhPC_HDD" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CauHinhPC_HDD1" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CauHinhPC_Mainboard" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CauHinhPC_Nguon" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CauHinhPC_RAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_PhanMem_CauHinhPC" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_PhanMem_CauHinhPC1" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CPU_DongCPU" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_CPU_HangSX" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_DanhGia_GPU" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_DanhGia_HDD" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_DanhGia_Mainboard" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_DanhGia_RAM" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_DanhGia_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_GPU_HangSX" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_GPU_HangSX1" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_HDD_HangSX" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_Mainboard_HangSX" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_Nguon_HangSX" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_RAM_HangSX" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_Mainboard_LoaiRam" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_RAM_LoaiRam" ManuallyRouted="false" />
+        <AssociationConnector Association="DOANCNModel.FK_User_PhanQuyen" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

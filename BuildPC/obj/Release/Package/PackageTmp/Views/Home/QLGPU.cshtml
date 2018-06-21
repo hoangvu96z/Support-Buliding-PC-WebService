@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "QLGPU";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="~/Scripts/FunctionQLGPU.js"></script>
+</head>
+
+<body>
+    <div>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        QUẢN LÝ
+
+                    </a>
+                </div>
+
+                <div class="notifications-wrapper">
+                    <ul class="nav">
+                        <li class="dropdown">
+                            <ul class="list-group list-group-flush">
+                                <a href="@Url.Action("QuanLy","Home")"><li class="list-group-item"> RAM</li></a>
+                                <a href="@Url.Action("QLCPU","Home")"><li class="list-group-item"> CPU</li></a>
+                                <a href="#"><li class="list-group-item"> GPU</li></a>
+                                <a href="@Url.Action("QLHDD","Home")"><li class="list-group-item"> HDD</li></a>
+                                <a href="@Url.Action("QLMainboard","Home")"><li class="list-group-item"> Mainboard</li></a>
+                                <a href="@Url.Action("QLCasePC","Home")"><li class="list-group-item"> CasePC</li></a>
+                                <a href="@Url.Action("QLNguon","Home")"><li class="list-group-item"> Nguồn</li></a>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- /. NAV TOP  -->
+            <!-- /. SIDEBAR MENU (navbar-side) -->
+            <div>
+                <div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-8" name="sort">
+                            <label>Lọc giá: Từ </label>
+                            <input type="text" id="sortMin" />
+                            <label> đến</label>
+                            <input type="text" id="sortMax" />
+                            <button class="btn btn-primary btn-group-sm" id="sort" onclick="Loc()">Lọc</button>
+                        </div>
+                        <div class="col-md-4" name="search">
+                            <label>Tìm tên: </label>
+                            <input type="text" id="search" />
+                            <button class="btn btn-primary btn-group-sm" id="btnseach" onclick="Timkiem()">Tìm kiếm</button>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="table-responsive">
+
+                                    <table id="mytable" class="table table-bordred table-striped">
+
+                                        <thead>
+                                            <th>HangSX</th>
+                                            <th>HangChipset</th>
+                                            <th>Model</th>
+                                            <th>VGA</th>
+                                            <th>PCI</th>
+                                            <th>BoNho</th>
+                                            <th>LoaiRam</th>
+                                            <th>DienNang</th>
+                                            <th>Diem</th>
+                                            <th>DanhGia</th>
+                                            <th>Giaban</th>
+                                            <th>URL</th>
+                                        </thead>
+                                        <tbody id="dispgpu" name="gpu"></tbody>
+                                    </table>
+                                    <button class="btn btn-success btn-lg" id="create" onclick="Them()">+Thêm sản phẩm</button>
+
+                                    <div class="clearfix"></div>
+                                    <ul class="pagination pull-right">
+                                        <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+
+                    </div>
+
+                    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+
+                    </div>
+
+                </div>
+                <!-- /. PAGE INNER  -->
+            </div>
+            <!-- /. PAGE WRAPPER  -->
+        </div>
+        <!-- /. WRAPPER  -->
+
+        <script src="../Scripts/jquery-1.11.1.js"></script>
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="../Scripts/bootstrap.js"></script>
+        <!-- METISMENU SCRIPTS -->
+        <script src="../Scripts/jquery.metisMenu.js"></script>
+        <!-- CUSTOM SCRIPTS -->
+        <script src="../Scripts/custom.js"></script>
+        <script src="../Scripts/jquery.metisMenu.js"></script>
+    </div>
+
+    @section Scripts{
+        <script type="text/javascript">
+
+
+
+        </script>
+    }
+</body>
+
+
+
+
+
+
+
+
+
+

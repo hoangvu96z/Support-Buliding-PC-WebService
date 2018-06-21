@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DOANCNModelStoreContainer" CdmEntityContainer="DOANCNEntities">
+    <EntitySetMapping Name="CasePCs">
+      <EntityTypeMapping TypeName="DOANCNModel.CasePC">
+        <MappingFragment StoreEntitySet="CasePC">
+          <ScalarProperty Name="MaCase" ColumnName="MaCase" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ChieuDai" ColumnName="ChieuDai" />
+          <ScalarProperty Name="ChieuRong" ColumnName="ChieuRong" />
+          <ScalarProperty Name="ChieuCao" ColumnName="ChieuCao" />
+          <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+          <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CauHinhPCs">
+      <EntityTypeMapping TypeName="DOANCNModel.CauHinhPC">
+        <MappingFragment StoreEntitySet="CauHinhPC">
+          <ScalarProperty Name="MaCH" ColumnName="MaCH" />
+          <ScalarProperty Name="MaCPU" ColumnName="MaCPU" />
+          <ScalarProperty Name="MaMain" ColumnName="MaMain" />
+          <ScalarProperty Name="MaRam" ColumnName="MaRam" />
+          <ScalarProperty Name="MaRam2" ColumnName="MaRam2" />
+          <ScalarProperty Name="MaHDD" ColumnName="MaHDD" />
+          <ScalarProperty Name="MaHDD2" ColumnName="MaHDD2" />
+          <ScalarProperty Name="MaCase" ColumnName="MaCase" />
+          <ScalarProperty Name="MaNguon" ColumnName="MaNguon" />
+          <ScalarProperty Name="MaGPU" ColumnName="MaGPU" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CPUs">
+      <EntityTypeMapping TypeName="DOANCNModel.CPU">
+        <MappingFragment StoreEntitySet="CPU">
+          <ScalarProperty Name="MaCPU" ColumnName="MaCPU" />
+          <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Socket" ColumnName="Socket" />
+          <ScalarProperty Name="SoNhan" ColumnName="SoNhan" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="XungNhip" ColumnName="XungNhip" />
+          <ScalarProperty Name="Dohoa" ColumnName="Dohoa" />
+          <ScalarProperty Name="DongCPU" ColumnName="DongCPU" />
+          <ScalarProperty Name="Cache" ColumnName="Cache" />
+          <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+          <ScalarProperty Name="Diennang" ColumnName="Diennang" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhGias">
+      <EntityTypeMapping TypeName="DOANCNModel.DanhGia">
+        <MappingFragment StoreEntitySet="DanhGia">
+          <ScalarProperty Name="MaDanhGia" ColumnName="MaDanhGia" />
+          <ScalarProperty Name="MaUser" ColumnName="MaUser" />
+          <ScalarProperty Name="TGDanhGia" ColumnName="TGDanhGia" />
+          <ScalarProperty Name="DiemTong" ColumnName="DiemTong" />
+          <ScalarProperty Name="DiemCPU" ColumnName="DiemCPU" />
+          <ScalarProperty Name="MaCPU" ColumnName="MaCPU" />
+          <ScalarProperty Name="DiemGPU" ColumnName="DiemGPU" />
+          <ScalarProperty Name="MaGPU" ColumnName="MaGPU" />
+          <ScalarProperty Name="DiemMain" ColumnName="DiemMain" />
+          <ScalarProperty Name="MaMain" ColumnName="MaMain" />
+          <ScalarProperty Name="DiemHDD" ColumnName="DiemHDD" />
+          <ScalarProperty Name="MaHDD" ColumnName="MaHDD" />
+          <ScalarProperty Name="DiemRam" ColumnName="DiemRam" />
+          <ScalarProperty Name="MaRam" ColumnName="MaRam" />
+          <ScalarProperty Name="Binhluan" ColumnName="Binhluan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DongCPUs">
+      <EntityTypeMapping TypeName="DOANCNModel.DongCPU">
+        <MappingFragment StoreEntitySet="DongCPU">
+          <ScalarProperty Name="MaDongCPU" ColumnName="MaDongCPU" />
+          <ScalarProperty Name="TenDongCPU" ColumnName="TenDongCPU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GPUs">
+      <EntityTypeMapping TypeName="DOANCNModel.GPU">
+        <MappingFragment StoreEntitySet="GPU">
+          <ScalarProperty Name="MaGPU" ColumnName="MaGPU" />
+          <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+          <ScalarProperty Name="HangChipset" ColumnName="HangChipset" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="VGA" ColumnName="VGA" />
+          <ScalarProperty Name="PCI" ColumnName="PCI" />
+          <ScalarProperty Name="BoNho" ColumnName="BoNho" />
+          <ScalarProperty Name="LoaiRam" ColumnName="LoaiRam" />
+          <ScalarProperty Name="DienNang" ColumnName="DienNang" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HangSXes">
+      <EntityTypeMapping TypeName="DOANCNModel.HangSX">
+        <MappingFragment StoreEntitySet="HangSX">
+          <ScalarProperty Name="MaHSX" ColumnName="MaHSX" />
+          <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HDDs">
+      <EntityTypeMapping TypeName="DOANCNModel.HDD">
+        <MappingFragment StoreEntitySet="HDD">
+          <ScalarProperty Name="MaHDD" ColumnName="MaHDD" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="LoaiOCung" ColumnName="LoaiOCung" />
+          <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+          <ScalarProperty Name="DungLuong" ColumnName="DungLuong" />
+          <ScalarProperty Name="ChuanKetNoi" ColumnName="ChuanKetNoi" />
+          <ScalarProperty Name="TocDoDoc" ColumnName="TocDoDoc" />
+          <ScalarProperty Name="TocDoGhi" ColumnName="TocDoGhi" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiRams">
+      <EntityTypeMapping TypeName="DOANCNModel.LoaiRam">
+        <MappingFragment StoreEntitySet="LoaiRam">
+          <ScalarProperty Name="MaLoaiRam" ColumnName="MaLoaiRam" />
+          <ScalarProperty Name="TenLoaiRam" ColumnName="TenLoaiRam" />
+          <ScalarProperty Name="DongRam" ColumnName="DongRam" />
+          <ScalarProperty Name="BusRam" ColumnName="BusRam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mainboards">
+      <EntityTypeMapping TypeName="DOANCNModel.Mainboard">
+        <MappingFragment StoreEntitySet="Mainboard">
+          <ScalarProperty Name="MaMain" ColumnName="MaMain" />
+          <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Socket" ColumnName="Socket" />
+          <ScalarProperty Name="Chipset" ColumnName="Chipset" />
+          <ScalarProperty Name="RamToiDa" ColumnName="RamToiDa" />
+          <ScalarProperty Name="PCI" ColumnName="PCI" />
+          <ScalarProperty Name="SoKheRam" ColumnName="SoKheRam" />
+          <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+          <ScalarProperty Name="LoaiRamToiDa" ColumnName="LoaiRamToiDa" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nguons">
+      <EntityTypeMapping TypeName="DOANCNModel.Nguon">
+        <MappingFragment StoreEntitySet="Nguon">
+          <ScalarProperty Name="MaNguon" ColumnName="MaNguon" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+          <ScalarProperty Name="CongSuat" ColumnName="CongSuat" />
+          <ScalarProperty Name="HieuSuat" ColumnName="HieuSuat" />
+          <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="Danhgia" ColumnName="Danhgia" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhanMems">
+      <EntityTypeMapping TypeName="DOANCNModel.PhanMem">
+        <MappingFragment StoreEntitySet="PhanMem">
+          <ScalarProperty Name="MaPM" ColumnName="MaPM" />
+          <ScalarProperty Name="TenPM" ColumnName="TenPM" />
+          <ScalarProperty Name="CHToiThieu" ColumnName="CHToiThieu" />
+          <ScalarProperty Name="CHKhuyenNghi" ColumnName="CHKhuyenNghi" />
+          <ScalarProperty Name="LoaiPM" ColumnName="LoaiPM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhanQuyens">
+      <EntityTypeMapping TypeName="DOANCNModel.PhanQuyen">
+        <MappingFragment StoreEntitySet="PhanQuyen">
+          <ScalarProperty Name="MaPQ" ColumnName="MaPQ" />
+          <ScalarProperty Name="TenPQ" ColumnName="TenPQ" />
+          <ScalarProperty Name="CodePQ" ColumnName="CodePQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RAMs">
+      <EntityTypeMapping TypeName="DOANCNModel.RAM">
+        <MappingFragment StoreEntitySet="RAM">
+          <ScalarProperty Name="MaRam" ColumnName="MaRam" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="LoaiRam" ColumnName="LoaiRam" />
+          <ScalarProperty Name="TocDoBus" ColumnName="TocDoBus" />
+          <ScalarProperty Name="DungLuong" ColumnName="DungLuong" />
+          <ScalarProperty Name="HangSX" ColumnName="HangSX" />
+          <ScalarProperty Name="Giaban" ColumnName="Giaban" />
+          <ScalarProperty Name="Diem" ColumnName="Diem" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DOANCNModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="MaUser" ColumnName="MaUser" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PhanQuyen" ColumnName="PhanQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

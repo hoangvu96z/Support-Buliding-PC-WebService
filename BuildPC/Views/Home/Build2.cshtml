@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Build2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/FunctionBuild2.js"></script>
+<script src="~/Scripts/jquery.priceformat.js"></script>
+<h3 style="color:darkblue; font-weight:bold">GỢI Ý CẤU HÌNH PC</h3>
+<div>
+    <div>
+        <h4> CHỌN LOẠI NHU CẦU </h4>
+
+        <select id="nhapnhucau" onchange="chonloai()">
+            <option value="">----Select----</option>
+            <option value="GAME">GAME</option>
+            <option value="PHANMEM">PHẦN MỀM</option>
+        </select>
+    </div>
+
+    <div>
+        <h4> CHỌN CHI TIẾT NHU CẦU </h4>
+        <select id="dispten">
+            <option>----Select----</option>
+        </select>
+    </div>
+    <div>
+        <h4> NHẬP SỐ TIỀN </h4>
+        <input id="Giatien" type="text" pattern="[0-9]*" />
+
+    </div>
+    </br>
+        <button class="btn btn-primary btn-lg" onclick="chongame()">TÌM CẤU HÌNH PHÙ HỢP</button>
+
+
+    @*<select id="hienthigpu" onchange="LoadCPU()"></select>
+        <select id="hienthicpu" onchange="LoadMainboard()"></select>
+        <select id="hienthimainboard" onchange="LoadRam()"></select>*@
+    @*<select id="hienthiram"></select>*@
+    <hr/>
+    <h3>KẾT QUẢ </h3>
+    <div class="card">
+        <ul class="list-group list-group-flush" id="hienthikhac">
+         
+            @*<li class="list-group-item" id="hienthikhac1" </li>
+            <li class="list-group-item" id="hienthikhac2" </li>
+            <li class="list-group-item" id="hienthikhac3" </li>
+            <li class="list-group-item" id="hienthikhac4" </li>
+            <li class="list-group-item" id="hienthikhac5" </li>
+            <li class="list-group-item" id="hienthikhac6" </li>
+            <li class="list-group-item" id="hienthikhac7" </li>
+            <li class="list-group-item" id="hienthikhac8" </li>
+            <li class="list-group-item" id="hienthikhac9" </li>
+            <li class="list-group-item" id="hienthikhac10" </li>*@
+
+        </ul>
+    </div>
+        <div hidden>
+            <p>cpu</p><input type="text" id="cpu" />
+            <p>main</p><input type="text" id="main" />
+            <p>ram</p><input type="text" id="ram" />
+            <p>ram2</p><input type="text" id="ram2" />
+            <p>hdd</p><input type="text" id="hdd" />
+            <p>hdd2</p><input type="text" id="hdd2" />
+            <p>casepc</p><input type="text" id="casepc" />
+            <p>nguon</p><input type="text" id="nguon" />
+            <p>gpu</p><input type="text" id="gpu" />
+            <button onclick="Test()">Test</button>
+        </div>
+       
+    </div>
+
