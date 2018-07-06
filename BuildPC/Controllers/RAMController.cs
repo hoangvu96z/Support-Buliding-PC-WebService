@@ -8,12 +8,14 @@ using BuildPC.Models;
 
 namespace BuildPC.Controllers
 {
+    [RoutePrefix("api/ram")]
+
     public class RAMController : ApiController
     {
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<RAM> GetAllProduct()
+        public IList<RAM> GetAllProduct()
         {
             IList<RAM> proList = new List<RAM>();
             var query = (from prods in context.RAMs select prods).ToList();
@@ -59,8 +61,8 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/ram/getlist/{Tiendu}/{Giaban}/{Dungluong}/{Loairam}")]
-        public IEnumerable<RAM> GetList(int Tiendu, int Giaban, int Dungluong, string Loairam)
+        [Route("getlist/{Tiendu}/{Giaban}/{Dungluong}/{Loairam}")]
+        public IList<RAM> GetList(int Tiendu, int Giaban, int Dungluong, string Loairam)
         {
             IList<RAM> proList = new List<RAM>();
             var query = (from prods in context.RAMs where( (prods.Giaban - Giaban <= Tiendu) && (prods.DungLuong >= Dungluong)&&(prods.LoaiRam==Loairam)) select prods).ToList();
@@ -133,7 +135,7 @@ namespace BuildPC.Controllers
         }
 
         [HttpPost]
-        [Route("api/ram/delete/{MaRam}")]
+        [Route("delete/{MaRam}")]
         public void Delete(string MaRam)
         {
             if (MaRam == null)
@@ -155,9 +157,9 @@ namespace BuildPC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/ram/sort/{Price1:int}/{Price2:int}")]
+        [Route("sort/{Price1:int}/{Price2:int}")]
         [HttpGet]
-        public IEnumerable<RAM> Sort(int Price1, int Price2)
+        public IList<RAM> Sort(int Price1, int Price2)
         {
             List<RAM> lstRam = context.RAMs.ToList();
             List<RAM> lstRamNeed = new List<RAM>();
@@ -184,15 +186,39 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/ram/search/{NAME}")]
+        [Route("search/{NAME}")]
         [HttpGet]
-        public IEnumerable<RAM> Search(string NAME)
+        public IList<RAM> Search(string NAME)
         {
             List<RAM> lstRam = new List<RAM>();
             lstRam = context.RAMs.SqlQuery($"Select * From RAM Where Model like '%{NAME}%'").ToList();
 
             IList<RAM> proList = new List<RAM>();
             foreach (var item in lstRam)
+            {
+                proList.Add(new RAM
+                {
+                    MaRam = item.MaRam,
+                    Model = item.Model,
+                    LoaiRam = item.LoaiRam,
+                    TocDoBus = Convert.ToInt32(item.TocDoBus),
+                    DungLuong = Convert.ToInt32(item.DungLuong),
+                    HangSX = item.HangSX,
+                    Giaban = Convert.ToInt32(item.Giaban),
+                    Diem = Convert.ToInt32(item.Diem),
+                    DanhGia = Convert.ToInt32(item.DanhGia),
+                    URL = item.URL
+                });
+            }
+            return proList;
+        }
+
+        [Route("getlistupdate/{Giatien}/{Dungluong}/{Loairam}")]
+        public IList<RAM> GetListUpdate(int Giatien, int Dungluong, string Loairam)
+        {
+            IList<RAM> proList = new List<RAM>();
+            var query = (from prods in context.RAMs where ((prods.Giaban <= Giatien) && (prods.DungLuong == Dungluong) && (prods.LoaiRam == Loairam)) select prods).ToList();
+            foreach (var item in query)
             {
                 proList.Add(new RAM
                 {

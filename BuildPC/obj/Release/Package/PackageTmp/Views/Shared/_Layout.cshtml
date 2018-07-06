@@ -7,87 +7,87 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/styleweb.css" rel="stylesheet" />
-    <script src="~/Scripts/FunctionBuild2.js"></script>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/FunctionQuanly.js"></script>
-    <script src="~/Scripts/FunctionBuild1.js"></script>
 </head>
 <body>
-    <div class="logo">
+    <div class="container">
         <div class="row text-center text-xs-center text-sm-left text-md-left">
-            <img src="http://acm.uit.edu.vn/upload/image/logouit.png" alt="Logo" height="42" width="auto">
-            <h2> WEBSITE HỔ TRỢ XÂY DỰNG CẤU HÌNH PC</h2>
+            <div class="col-sm-12 col-md-1 text-center"><img src="https://i.pinimg.com/originals/94/84/41/9484419af82e0a81356f725d9ce68d52.jpg" alt="Logo" height="64" width="auto"></div>
+            <div class="col-sm-18 col-md-8 text-left"> <h2 style="color:darkblue; font-weight:bold"> WEBSITE HỔ TRỢ XÂY DỰNG CẤU HÌNH PC</h2></div>
         </div>
     </div>
-        <div class="container">
-            <ul class="nav">
-                <li><a href="@Url.Action("Build1","Home")">Trang chủ</a></li>
-                <li>
-                    <a href="#">Bảng xếp hạng</a>
-                    <ul class="sub-menu">
-                        <li><a href="#">Xếp hạng CPU</a></li>
-
-                        <li><a href="#">Xếp hạng Card màn hình </a></li>
-                    </ul>
-                </li>
-                <li><a href="@Url.Action("Build1","Home")">Xây dựng PC</a></li>
-                <li><a href="@Url.Action("Build2","Home")">Gợi ý cấu hình PC</a></li>
-                <li><a href="#">Kiểm tra tương thích</a></li>
-                <li><a href="#">Hỗ trợ nâng cấp</a></li>
-                <li><a href="@Url.Action("Quanly","Home")">Quản lý</a>
-                <ul class="sub-menu">
+    <div class="container">
+        <ul class="nav">
+            <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+            <li>
+                <a href="@Url.Action("Ranking","Home")">Bảng xếp hạng</a>
+            </li>
+            <li><a href="@Url.Action("Build1","Home")">Xây dựng PC</a></li>
+            <li><a href="@Url.Action("Build2","Home")">Gợi ý cấu hình PC</a></li>
+            <li>
+                <a href="@Url.Action("Check","Home")">Kiểm tra PC</a>
+                @*<ul class="sub-menu">
+                    <li><a href="@Url.Action("CheckPC","Home")">Check PC</a></li>
+                    <li><a href="@Url.Action("CheckRM","Home")">Ram vs Mainboard</a></li>
+                    <li><a href="@Url.Action("CheckCM","Home")">CPU vs Mainboard</a></li>
+                    <li><a href="@Url.Action("CheckGM","Home")">GPU vs Mainboard</a></li>
+                    <li><a href="@Url.Action("CheckCP","Home")">CPU vs GPU</a></li>
+                </ul>*@
+            </li>
+            <li><a href="@Url.Action("Nangcap","Home")">Hỗ trợ nâng cấp</a></li>
+            <li>
+                <a href="@Url.Action("Quanly","Home")">Quản lý</a>
+                @*<ul class="sub-menu">
                     <li><a href="@Url.Action("Quanly","Home")">RAM</a></li>
                     <li><a href="@Url.Action("QLCPU","Home")">CPU</a></li>
                     <li><a href="@Url.Action("QLGPU","Home")">GPU</a></li>
                     <li><a href="@Url.Action("QLCasePC","Home")">CasePC</a></li>
                     <li><a href="@Url.Action("QLNguon","Home")">Nguồn</a></li>
                     <li><a href="@Url.Action("QLMainboard","Home")">Mainboad</a></li>
-                     <li><a href="@Url.Action("QLHDD","Home")">Ổ cứng</a></li>
+                    <li><a href="@Url.Action("QLHDD","Home")">Ổ cứng</a></li>
+                </ul>*@
+            </li>
+        </ul>
 
+
+
+
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <hr width="80%" size="10px" align="center" />
+
+
+
+
+    <div class="container" style="background-color:#0080C0; color:white">
+        <div class="container2" style="background-color:dodgerblue">
+            <div class="col-xs-12 col-sm-4 col-md-8">
+                <h4 style="font-weight:bold">ĐỒ ÁN CHUYÊN NGÀNH</h4>
+                <hr />
+                <ul class="list-unstyled quick-links">
+                    <li>Đề tài : Website hỗ trợ xây dựng cấu hình PC</li>
+                    <li>Lớp : SE112.I21 - 07/2018</li>
+                    <li></li>
                 </ul>
-                </li>
-            </ul>
-
-
-
-
-        </div>
-
-        <div class="container body-content">
-            @RenderBody()
-        </div>
-
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
-
-
-        <div class="container">
-            <div class="container2">
-                <hr width="100%" size="10px" align="center" color="blue" />
-                <div class="col-xs-12 col-sm-4 col-md-8">
-
-                    <h4>ĐỒ ÁN DOT.NET WEB API</h4>
-                    <ul class="list-unstyled quick-links">
-                        <li>Đề tài : Website hổ trợ xây dựng cấu hình PC</li>
-                        <li>Lớp : SE112.I21 - 06/2018</li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <h4>DANH SÁCH THÀNH VIÊN</h4>
-                    <ul class="list-unstyled quick-links">
-                        <li>TRẦN QUANG THIÊN</li>
-                        <li>NGUYỄN PHI HOÀNG VŨ</li>
-                        <li>ĐẶNG VĂN TRIỀU</li>
-
-
-                    </ul>
-                </div>
             </div>
-          
-
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <h4>DANH SÁCH THÀNH VIÊN</h4>
+                <hr />
+                <ul class="list-unstyled quick-links">
+                    <li>TRẦN QUANG THIÊN</li>
+                    <li>NGUYỄN PHI HOÀNG VŨ</li>
+                </ul>
+            </div>
         </div>
-        <!-- Footer -->
+    </div>
+    <!-- Footer -->
 </body>
 </html>

@@ -17,7 +17,7 @@ namespace BuildPC.Controllers
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<HangSX> GetAllProduct()
+        public IList<HangSX> GetAllProduct()
         {
             IList<HangSX> proList = new List<HangSX>();
             var query = (from prods in context.HangSXes select prods).ToList();
@@ -33,7 +33,7 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        public IEnumerable<HangSX> GetByID(string id)
+        public IList<HangSX> GetByID(string id)
         {
             IList<HangSX> proList = new List<HangSX>();
             var query = (from prods in context.HangSXes where prods.MaHSX == id select prods).ToList();

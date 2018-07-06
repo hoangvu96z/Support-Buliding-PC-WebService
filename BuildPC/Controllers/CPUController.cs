@@ -9,13 +9,14 @@ using BuildPC.Models;
 
 namespace BuildPC.Controllers
 {
+    [RoutePrefix("api/cpu")]
     public class CPUController : ApiController
     {
 
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<CPU> GetAllProduct()
+        public IList<CPU> GetAllProduct()
         {
             IList<CPU> proList = new List<CPU>();
             var query = (from prods in context.CPUs select prods).ToList();
@@ -70,7 +71,8 @@ namespace BuildPC.Controllers
             }
             return CPU;
         }
-        [Route("api/cpu/getlist/{DiemCPU}/{DiemGPU}/{Tiendu}/{Giaban}")]
+
+        [Route("getlist/{DiemCPU}/{DiemGPU}/{Tiendu}/{Giaban}")]
         public IList<CPU> GetList(int DiemCPU, int DiemGPU, int Tiendu, int Giaban)
         {
             IList<CPU> proList = new List<CPU>();
@@ -99,7 +101,7 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/cpu/getlist2/{DiemCPU}/{MaGPU}/{Tiendu}/{Giaban}")]
+        [Route("getlist2/{DiemCPU}/{MaGPU}/{Tiendu}/{Giaban}")]
         public IList<CPU> GetList2(int DiemCPU, string MaGPU, int Tiendu, int Giaban)
         {
             IList<CPU> proList = new List<CPU>();
@@ -183,7 +185,7 @@ namespace BuildPC.Controllers
         }
 
         [HttpPost]
-        [Route("api/cpu/delete/{MaCPU}")]
+        [Route("delete/{MaCPU}")]
         public void Delete(string MaCPU)
         {
             if (MaCPU == null)
@@ -205,9 +207,9 @@ namespace BuildPC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/cpu/sort/{Price1:int}/{Price2:int}")]
+        [Route("sort/{Price1:int}/{Price2:int}")]
         [HttpGet]
-        public IEnumerable<CPU> Sort(int Price1, int Price2)
+        public IList<CPU> Sort(int Price1, int Price2)
         {
             List<CPU> lstCPU = context.CPUs.ToList();
             List<CPU> lstCPUNeed = new List<CPU>();
@@ -239,9 +241,9 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/cpu/search/{NAME}")]
+        [Route("search/{NAME}")]
         [HttpGet]
-        public IEnumerable<CPU> Search(string NAME)
+        public IList<CPU> Search(string NAME)
         {
             List<CPU> lstCPU = new List<CPU>();
             lstCPU = context.CPUs.SqlQuery($"Select * From CPU Where Model like '%{NAME}%'").ToList();
@@ -271,14 +273,43 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/cpu/orderby")]
+        [Route("orderby")]
         [HttpGet]
-        public IEnumerable<CPU> Top50()
+        public IList<CPU> Top50()
         {
             List<CPU> lstCPU = context.CPUs.ToList();
             List<CPU> lstCPUNeed = lstCPU.OrderByDescending(c => c.Diem).Take(50).ToList();
             IList<CPU> proList = new List<CPU>();
             foreach (var item in lstCPUNeed)
+            {
+                proList.Add(new CPU
+                {
+                    MaCPU = item.MaCPU,
+                    HangSX = item.HangSX,
+                    Model = item.Model,
+                    Socket = item.Socket,
+                    SoNhan = Convert.ToInt32(item.SoNhan),
+                    SoLuong = Convert.ToInt32(item.SoLuong),
+                    XungNhip = Convert.ToDouble(item.XungNhip),
+                    Dohoa = item.Dohoa,
+                    DongCPU = item.DongCPU,
+                    Cache = item.Cache,
+                    Giaban = Convert.ToInt32(item.Giaban),
+                    Diennang = Convert.ToInt32(item.Diennang),
+                    Diem = Convert.ToInt32(item.Diem),
+                    DanhGia = Convert.ToInt32(item.DanhGia),
+                    URL = item.URL
+                });
+            }
+            return proList;
+        }
+
+        [Route("getlistupdate/{DiemCPU}/{DiemGPU}/{Giatien}")]
+        public IList<CPU> GetListUpdate(int DiemCPU, int DiemGPU, int Giatien)
+        {
+            IList<CPU> proList = new List<CPU>();
+            var query = (from prods in context.CPUs where (prods.Diem <= DiemGPU + 1000 && prods.Diem >= DiemGPU - 500) && (prods.Diem > DiemCPU) && (prods.Giaban <= Giatien) select prods).ToList();
+            foreach (var item in query)
             {
                 proList.Add(new CPU
                 {

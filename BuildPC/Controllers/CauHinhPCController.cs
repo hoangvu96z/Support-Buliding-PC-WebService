@@ -17,7 +17,7 @@ namespace BuildPC.Controllers
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<CauHinhPC> GetAllProduct()
+        public IList<CauHinhPC> GetAllProduct()
         {
             IList<CauHinhPC> proList = new List<CauHinhPC>();
             var query = (from prods in context.CauHinhPCs select prods).ToList();

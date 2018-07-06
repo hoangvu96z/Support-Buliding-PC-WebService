@@ -8,12 +8,13 @@ using System.Web.Http;
 
 namespace BuildPC.Controllers
 {
+    [RoutePrefix("api/hdd")]
     public class HDDController : ApiController
     {
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<HDD> GetAllProduct()
+        public IList<HDD> GetAllProduct()
         {
             IList<HDD> proList = new List<HDD>();
             var query = (from prods in context.HDDs select prods).ToList();
@@ -115,7 +116,7 @@ namespace BuildPC.Controllers
         }
 
         [HttpPost]
-        [Route("api/hdd/delete/{MaHDD}")]
+        [Route("delete/{MaHDD}")]
         public void Delete(string MaHDD)
         {
             if (MaHDD == null)
@@ -137,9 +138,9 @@ namespace BuildPC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/hdd/sort/{Price1:int}/{Price2:int}")]
+        [Route("sort/{Price1:int}/{Price2:int}")]
         [HttpGet]
-        public IEnumerable<HDD> Sort(int Price1, int Price2)
+        public IList<HDD> Sort(int Price1, int Price2)
         {
             List<HDD> lstHDD = context.HDDs.ToList();
             List<HDD> lstHDDNeed = new List<HDD>();
@@ -168,9 +169,9 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/hdd/search/{NAME}")]
+        [Route("search/{NAME}")]
         [HttpGet]
-        public IEnumerable<HDD> Search(string NAME)
+        public IList<HDD> Search(string NAME)
         {
             List<HDD> lstHDD = new List<HDD>();
             lstHDD = context.HDDs.SqlQuery($"Select * From HDD Where Model like '%{NAME}%'").ToList();

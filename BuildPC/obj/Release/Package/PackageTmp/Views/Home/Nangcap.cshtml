@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Nangcap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+    <script src="~/Scripts/FunctionNangcap.js"></script>
+</head>
+<body>
+    <h3 style="color:darkblue; font-weight:bold">HỔ TRỢ NÂNG CẤP</h3>
+    <br />
+    <div class="container" style=" border: 2px solid; border-radius: 5px; border-color:gainsboro">
+        <h4>Nhập số tiền bạn dùng nâng cấp: </h4>
+        <input type="text" id="Giatien">
+        <br />
+        <br />
+    </div>
+    <br />
+    <br />
+    <div class="container" style=" border: 2px solid; border-radius: 5px; border-color:gainsboro">
+        <h4>Chọn linh kiện bạn muốn nâng cấp:</h4>
+        <div class="row" style="margin-left:10px">
+            <div class="col-md-4">
+                <input type="radio" value="CPU" name="nhucau" /><span> CPU</span>
+            </div>
+            <div class="col-md-4">
+                <input type="radio" value="GPU" name="nhucau" /><span> GPU</span>
+            </div>
+            <div class="col-md-4">
+                <input type="radio" value="RAM" name="nhucau" /><span> RAM</span>
+            </div>
+        </div>
+        <br />
+    </div>
+    <br />
+    <div class="container" style=" border: 2px solid; border-radius: 5px; border-color:gainsboro">
+        <h4>NHẬP CẤU HÌNH HIỆN CÓ: </h4>
+        <div class="row" style="margin-left:10px">
+            <h4>Chọn CPU: </h4>
+            <input list="lstcpu" id="cpu" onclick="Test(this)">
+            <datalist id="lstcpu"></datalist>
+        </div>
+
+        <div class="row" style="margin-left:10px">
+            <h4>Chọn GPU: </h4>
+            <input list="lstgpu" id="gpu" onclick="Test(this)">
+            <datalist id="lstgpu"></datalist>
+        </div>
+
+        <div class="row" style="margin-left:10px">
+            <h4>Chọn Mainboard: </h4>
+            <input list="lstmain" id="main" onclick="Test(this)">
+            <datalist id="lstmain"></datalist>
+        </div>
+
+
+        <div class="row" style="margin-left:10px">
+            <h4>Chọn Ram: </h4>
+            <input list="lstram" id="ram" onclick="Test(this)">
+            <datalist id="lstram"></datalist>
+        </div>
+        <br />
+    </div>
+    <br />
+
+    <input type="button" class="btn btn-primary btn-lg" value="Update" onclick="Update()" />
+
+    <div id="disresult" style="visibility:hidden">
+        <div id="title"></div>
+        <div id="result"></div>
+    </div>
+</body>
+
+
+

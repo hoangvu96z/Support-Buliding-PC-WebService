@@ -7,12 +7,13 @@ using System.Web.Http;
 using BuildPC.Models;
 namespace BuildPC.Controllers
 {
+    [RoutePrefix("api/casepc")]
     public class CasePCController : ApiController
     {
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<CasePC> GetAllProduct()
+        public IList<CasePC> GetAllProduct()
         {
             IList<CasePC> proList = new List<CasePC>();
             var query = (from prods in context.CasePCs select prods).ToList();
@@ -108,7 +109,7 @@ namespace BuildPC.Controllers
         }
 
         [HttpPost]
-        [Route("api/casepc/delete/{MaCase}")]
+        [Route("delete/{MaCase}")]
         public void Delete(string MaCase)
         {
             if (MaCase == null)
@@ -130,9 +131,9 @@ namespace BuildPC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/casepc/sort/{Price1:int}/{Price2:int}")]
+        [Route("sort/{Price1:int}/{Price2:int}")]
         [HttpGet]
-        public IEnumerable<CasePC> Sort(int Price1, int Price2)
+        public IList<CasePC> Sort(int Price1, int Price2)
         {
             List<CasePC> lstCasePC = context.CasePCs.ToList();
             List<CasePC> lstCasePCNeed = new List<CasePC>();
@@ -159,9 +160,9 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/casepc/search/{NAME}")]
+        [Route("search/{NAME}")]
         [HttpGet]
-        public IEnumerable<CasePC> Search(string NAME)
+        public IList<CasePC> Search(string NAME)
         {
             List<CasePC> lstCasePC = new List<CasePC>();
             lstCasePC = context.CasePCs.SqlQuery($"Select * From CasePC Where Model like '%{NAME}%'").ToList();

@@ -5,39 +5,46 @@
 }
 <script src="~/Scripts/FunctionBuild1.js"></script>
 <div>
-    <h1> XÂY DỰNG CẤU HÌNH MÁY TÍNH</h1>
+    <h3 style="color:darkblue; font-weight:bold"> XÂY DỰNG CẤU HÌNH MÁY TÍNH</h3>
     <h4> Chọn GPU</h4>
-    <select id="dispGpu" name="gpu"></select>
+    <input list="dispGpu" id="lstgpu" style="width:1000px" onclick="Test(this)" />
+    <datalist id="dispGpu" style="width:1000px"></datalist>
     </br>
     </br>
     <h4> Chọn RAM</h4>
-    <select id="dispRam" name="ram"></select>
+    <input list="dispRam" id="lstram" style="width:1000px" onclick="Test(this)" />
+    <datalist id="dispRam" name="ram"></datalist>
     </br>
     </br>
     <h4> Chọn CPU</h4>
-    <select id="dispCPU" name="cpu"></select>
+    <input list="dispCPU" id="lstcpu" style="width:1000px" onclick="Test(this)" />
+    <datalist id="dispCPU" name="cpu"></datalist>
     </br>
     </br>
     <h4> Chọn POWER</h4>
-    <select id="dispPower" name="power"></select>
+    <input list="dispPower" id="lstpower" style="width:1000px" onclick="Test(this)" />
+    <datalist id="dispPower" name="power"></datalist>
     </br>
     </br>
     <h4> Chọn MAINBROAD</h4>
-    <select id="dispMainboard" name="mainboard"></select>
+    <input list="dispMainboard" id="lstmain" style="width:1000px" onclick="Test(this)" />
+    <datalist id="dispMainboard" name="mainboard"></datalist>
     </br>
     </br>
-    <h4> Chọn MAINHDD</h4>
-    <select id="dispHdd" name="hdd"></select>
+    <h4> Chọn HDD</h4>
+    <input list="dispHdd" id="lsthdd" style="width:1000px" onclick="Test(this)" />
+    <datalist id="dispHdd" name="hdd"></datalist>
     </br>
     </br>
     <h4> Chọn CASE</h4>
-    <select id="dispCase" name="case"></select>
+    <input list="dispCase" id="lstcase" style="width:1000px" onclick="Test(this)" />
+    <datalist id="dispCase" name="case" selectedIndex="0"></datalist>
     </br>
     </br>
-    <button name="3">Tổng tiền</button>
+    <button class="btn btn-primary btn-lg" id="tong" onclick="Tinhtong()">Tổng tiền</button>
     <h4 id="dispTongtien" name="tongtien"></h4>
     </br>
-
+    @*<button onclick="Test2()">Test</button>*@
     @*<input id="nhapram" />
         <button name="m">Hien thi</button>
         <p id="idram"></p>

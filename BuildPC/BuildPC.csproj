@@ -184,7 +184,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="BaiscAuthenticationAttribute.cs" />
+    <Compile Include="BasicAuthenticationAttribute.cs" />
     <Compile Include="Controllers\CalculateController.cs" />
     <Compile Include="Controllers\CasePCController.cs" />
     <Compile Include="Controllers\CauHinhPCController.cs" />
@@ -200,7 +200,6 @@
     <Compile Include="Controllers\NguonController.cs" />
     <Compile Include="Controllers\PhanMemController.cs" />
     <Compile Include="Controllers\PhanQuyensController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RAMController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -271,6 +270,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\1.png" />
+    <Content Include="Content\2.png" />
+    <Content Include="Content\3.png" />
+    <Content Include="Content\4.png" />
+    <Content Include="Content\5.png" />
+    <Content Include="Content\6.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\styleQuanly.css" />
@@ -323,6 +328,13 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\FunctionBuild1.js" />
     <Content Include="Scripts\FunctionBuild2.js" />
+    <Content Include="Scripts\FunctionCheck.js" />
+    <Content Include="Scripts\FunctionCheckCG.js" />
+    <Content Include="Scripts\FunctionCheckCM.js" />
+    <Content Include="Scripts\FunctionCheckGM.js" />
+    <Content Include="Scripts\FunctionCheckRM.js" />
+    <Content Include="Scripts\FunctionLogin.js" />
+    <Content Include="Scripts\FunctionNangcap.js" />
     <Content Include="Scripts\FunctionQLCasePC.js" />
     <Content Include="Scripts\FunctionQLCPU.js" />
     <Content Include="Scripts\FunctionQLGPU.js" />
@@ -333,7 +345,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\RankingList1.js" />
+    <Content Include="Scripts\RankingList.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config">
@@ -356,16 +368,20 @@
     <Content Include="Views\Home\Build2.cshtml" />
     <Content Include="Views\Home\Quanly.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\Nangcap.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Check.cshtml" />
+    <Content Include="Views\Home\Ranking.cshtml" />
+    <Content Include="Views\Home\CheckRM.cshtml" />
+    <Content Include="Views\Home\CheckCM.cshtml" />
+    <Content Include="Views\Home\CheckGM.cshtml" />
+    <Content Include="Views\Home\CheckCG.cshtml" />
     <Content Include="Views\Home\QLCasePC.cshtml" />
     <Content Include="Views\Home\QLCPU.cshtml" />
     <Content Include="Views\Home\QLGPU.cshtml" />
     <Content Include="Views\Home\QLHDD.cshtml" />
     <Content Include="Views\Home\QLMainboard.cshtml" />
     <Content Include="Views\Home\QLNguon.cshtml" />
-    <Content Include="Views\Home\XHCPU.cshtml" />
-    <Content Include="Views\Home\XHGPU.cshtml" />
-    <Content Include="Views\Product\Chitietsanpham.cshtml" />
-    <Content Include="Views\Product\CPURankingList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

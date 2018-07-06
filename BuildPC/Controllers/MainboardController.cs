@@ -12,12 +12,13 @@ using BuildPC.Models;
 
 namespace BuildPC.Controllers
 {
+    [RoutePrefix("api/mainboard")]
     public class MainboardController : ApiController
     {
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<Mainboard> GetAllProduct()
+        public IList<Mainboard> GetAllProduct()
         {
             IList<Mainboard> proList = new List<Mainboard>();
             var query = (from prods in context.Mainboards select prods).ToList();
@@ -28,7 +29,6 @@ namespace BuildPC.Controllers
                     MaMain = item.MaMain,
                     HangSX = item.HangSX,
                     Model = item.Model,
-                    Chipset = item.Chipset,
                     Socket = item.Socket,
                     RamToiDa = Convert.ToInt32(item.RamToiDa),
                     PCI = item.PCI,
@@ -56,7 +56,6 @@ namespace BuildPC.Controllers
                     HangSX = item.HangSX,
                     Model = item.Model,
                     Socket = item.Socket,
-                    Chipset = item.Chipset,
                     RamToiDa = Convert.ToInt32(item.RamToiDa),
                     PCI = item.PCI,
                     SoKheRam = Convert.ToInt32(item.SoKheRam),
@@ -71,8 +70,8 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/mainboard/{Socket}/{PCI}/{Tiendu}/{Giaban}")]
-        public IEnumerable<Mainboard> GetList(string Socket, string PCI, int Tiendu, int Giaban)
+        [Route("{Socket}/{PCI}/{Tiendu}/{Giaban}")]
+        public IList<Mainboard> GetList(string Socket, string PCI, int Tiendu, int Giaban)
         {
             IList<Mainboard> proList = new List<Mainboard>();
             var query = (from prods in context.Mainboards where (((prods.Socket == Socket) && (prods.PCI == PCI)) && (prods.Giaban - Giaban <= Tiendu)) select prods).ToList();
@@ -97,8 +96,8 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/mainboard/{Socket}/{Tiendu}/{Giaban}")]
-        public IEnumerable<Mainboard> GetList2(string Socket, int Tiendu, int Giaban)
+        [Route("{Socket}/{Tiendu}/{Giaban}")]
+        public IList<Mainboard> GetList2(string Socket, int Tiendu, int Giaban)
         {
             IList<Mainboard> proList = new List<Mainboard>();
             var query = (from prods in context.Mainboards where ((prods.Socket == Socket) && (prods.Giaban - Giaban <= Tiendu)) select prods).ToList();
@@ -175,7 +174,7 @@ namespace BuildPC.Controllers
         }
 
         [HttpPost]
-        [Route("api/main/delete/{MaMain}")]
+        [Route("delete/{MaMain}")]
         public void Delete(string MaMain)
         {
             if (MaMain == null)
@@ -197,9 +196,9 @@ namespace BuildPC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/main/sort/{Price1:int}/{Price2:int}")]
+        [Route("sort/{Price1:int}/{Price2:int}")]
         [HttpGet]
-        public IEnumerable<Mainboard> Sort(int Price1, int Price2)
+        public IList<Mainboard> Sort(int Price1, int Price2)
         {
             List<Mainboard> lstMain = context.Mainboards.ToList();
             List<Mainboard> lstMainNeed = new List<Mainboard>();
@@ -228,9 +227,9 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/main/search/{NAME}")]
+        [Route("search/{NAME}")]
         [HttpGet]
-        public IEnumerable<Mainboard> Search(string NAME)
+        public IList<Mainboard> Search(string NAME)
         {
             List<Mainboard> lstMain = new List<Mainboard>();
             lstMain = context.Mainboards.SqlQuery($"Select * From Mainboard Where Model like '%{NAME}%'").ToList();

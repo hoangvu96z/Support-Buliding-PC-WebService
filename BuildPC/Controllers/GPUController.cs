@@ -8,12 +8,13 @@ using BuildPC.Models;
 
 namespace BuildPC.Controllers
 {
+    [RoutePrefix("api/gpu")]
     public class GPUController : ApiController
     {
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<GPU> GetAllProduct()
+        public IList<GPU> GetAllProduct()
         {
             IList<GPU> proList = new List<GPU>();
             var query = (from prods in context.GPUs select prods).ToList();
@@ -26,7 +27,6 @@ namespace BuildPC.Controllers
                     HangChipset = item.HangSX,
                     Model = item.Model,
                     PCI = item.PCI,
-                    VGA = item.VGA,
                     BoNho = Convert.ToInt32(item.BoNho),
                     LoaiRam = item.LoaiRam,
                     DienNang = Convert.ToInt32(item.DienNang),
@@ -65,8 +65,35 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/gpu/getlist/{Diem}/{Tiendu}/{Giaban}")]
-        public IEnumerable<GPU> GetList(int Diem, int Tiendu, int Giaban)
+        [HttpGet]
+        [Route("GetAllProduct2")]
+        public IList<GPU> GetAllProduct2()
+        {
+            IList<GPU> proList = new List<GPU>();
+            var query = (from prods in context.GPUs where (prods.HangChipset.Equals("SX0004") == false) select prods).ToList();
+            foreach (var item in query)
+            {
+                proList.Add(new GPU
+                {
+                    MaGPU = item.MaGPU,
+                    HangSX = item.HangSX,
+                    HangChipset = item.HangSX,
+                    Model = item.Model,
+                    PCI = item.PCI,
+                    BoNho = Convert.ToInt32(item.BoNho),
+                    LoaiRam = item.LoaiRam,
+                    DienNang = Convert.ToInt32(item.DienNang),
+                    Diem = Convert.ToInt32(item.Diem),
+                    DanhGia = Convert.ToInt32(item.DanhGia),
+                    Giaban = Convert.ToInt32(item.Giaban),
+                    URL = item.URL
+                });
+            }
+            return proList;
+        }
+
+        [Route("getlist/{Diem}/{Tiendu}/{Giaban}")]
+        public IList<GPU> GetList(int Diem, int Tiendu, int Giaban)
         {
             IList<GPU> proList = new List<GPU>();
             var query = (from prods in context.GPUs where (prods.Diem >= Diem) && (prods.Giaban - Giaban <=  Tiendu)  select prods).ToList();
@@ -79,7 +106,6 @@ namespace BuildPC.Controllers
                     HangChipset = item.HangSX,
                     Model = item.Model,
                     PCI = item.PCI,
-                    VGA = item.VGA,
                     BoNho = Convert.ToInt32(item.BoNho),
                     LoaiRam = item.LoaiRam,
                     DienNang = Convert.ToInt32(item.DienNang),
@@ -126,7 +152,6 @@ namespace BuildPC.Controllers
                 HangChipset = gpu.HangSX,
                 Model = gpu.Model,
                 PCI = gpu.PCI,
-                VGA = gpu.VGA,
                 BoNho = Convert.ToInt32(gpu.BoNho),
                 LoaiRam = gpu.LoaiRam,
                 DienNang = Convert.ToInt32(gpu.DienNang),
@@ -145,7 +170,7 @@ namespace BuildPC.Controllers
         }
 
         [HttpPost]
-        [Route("api/gpu/delete/{MaRam}")]
+        [Route("delete/{MaGPU}")]
         public void Delete(string MaGPU)
         {
             if (MaGPU == null)
@@ -167,9 +192,9 @@ namespace BuildPC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/gpu/sort/{Price1:int}/{Price2:int}")]
+        [Route("sort/{Price1:int}/{Price2:int}")]
         [HttpGet]
-        public IEnumerable<GPU> Sort(int Price1, int Price2)
+        public IList<GPU> Sort(int Price1, int Price2)
         {
             List<GPU> lstGPU = context.GPUs.ToList();
             List<GPU> lstGPUNeed = new List<GPU>();
@@ -188,7 +213,6 @@ namespace BuildPC.Controllers
                     PCI = item.PCI,
                     BoNho = Convert.ToInt32(item.BoNho),
                     LoaiRam = item.LoaiRam,
-                    VGA = item.VGA,
                     DienNang = Convert.ToInt32(item.DienNang),
                     Diem = Convert.ToInt32(item.Diem),
                     DanhGia = Convert.ToInt32(item.DanhGia),
@@ -199,9 +223,9 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/gpu/search/{NAME}")]
+        [Route("search/{NAME}")]
         [HttpGet]
-        public IEnumerable<GPU> Search(string NAME)
+        public IList<GPU> Search(string NAME)
         {
             List<GPU> lstGPU = new List<GPU>();
             lstGPU = context.GPUs.SqlQuery($"Select * From GPU Where Model like '%{NAME}%'").ToList();
@@ -216,7 +240,6 @@ namespace BuildPC.Controllers
                     HangChipset = item.HangSX,
                     Model = item.Model,
                     PCI = item.PCI,
-                    VGA = item.VGA,
                     BoNho = Convert.ToInt32(item.BoNho),
                     LoaiRam = item.LoaiRam,
                     DienNang = Convert.ToInt32(item.DienNang),
@@ -229,9 +252,9 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/gpu/orderby")]
+        [Route("orderby")]
         [HttpGet]
-        public IEnumerable<GPU> Top50()
+        public IList<GPU> Top50()
         {
             List<GPU> lstGPU = context.GPUs.ToList();
             List<GPU> lstGPUNeed = lstGPU.OrderByDescending(c => c.Diem).Take(50).ToList();
@@ -245,7 +268,32 @@ namespace BuildPC.Controllers
                     HangChipset = item.HangSX,
                     Model = item.Model,
                     PCI = item.PCI,
-                    VGA = item.VGA,
+                    BoNho = Convert.ToInt32(item.BoNho),
+                    LoaiRam = item.LoaiRam,
+                    DienNang = Convert.ToInt32(item.DienNang),
+                    Diem = Convert.ToInt32(item.Diem),
+                    DanhGia = Convert.ToInt32(item.DanhGia),
+                    Giaban = Convert.ToInt32(item.Giaban),
+                    URL = item.URL
+                });
+            }
+            return proList;
+        }
+
+        [Route("getlistupdate/{Diem}/{Giatien}")]
+        public IList<GPU> GetListUpdate(int Diem, int Giatien)
+        {
+            IList<GPU> proList = new List<GPU>();
+            var query = (from prods in context.GPUs where (prods.Diem > Diem) && (prods.Giaban <= Giatien) select prods).ToList();
+            foreach (var item in query)
+            {
+                proList.Add(new GPU
+                {
+                    MaGPU = item.MaGPU,
+                    HangSX = item.HangSX,
+                    HangChipset = item.HangSX,
+                    Model = item.Model,
+                    PCI = item.PCI,
                     BoNho = Convert.ToInt32(item.BoNho),
                     LoaiRam = item.LoaiRam,
                     DienNang = Convert.ToInt32(item.DienNang),

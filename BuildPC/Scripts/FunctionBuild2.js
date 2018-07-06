@@ -1,5 +1,4 @@
-﻿$(document).ready(function ()
-{
+﻿$(document).ready(function () {
     $("#Giatien").keyup(function () {
         this.value = PriceFormat(this);
     });
@@ -69,21 +68,19 @@ function chongame() {
     }
 }
 
-function PriceFormat(obj)
-{
+function PriceFormat(obj) {
     var Chuoi = obj.value;
-    Chuoi = Chuoi.replace(/,/g,'');
+    Chuoi = Chuoi.replace(/,/g, '');
     if (Chuoi.length > 3) {
         var Money = Format(Chuoi, '');
         return Money;
     }
     else
         return Chuoi;
-    
+
 }
 
-function Format(Chuoi,result)
-{
+function Format(Chuoi, result) {
     while (Chuoi.length > 3) {
         result = ',' + Chuoi.substr(Chuoi.length - 3, Chuoi.length - 1) + result;
         Chuoi = Chuoi.substr(0, Chuoi.length - 3);

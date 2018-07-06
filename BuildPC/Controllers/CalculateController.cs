@@ -9,8 +9,8 @@ using BuildPC.Controllers;
 
 namespace BuildPC.Controllers
 {
-
-
+    [RoutePrefix("api/calculate")]
+    
     public class CalculateController : ApiController
     {
         public class CHPCtemp
@@ -26,8 +26,8 @@ namespace BuildPC.Controllers
             public string MaNguon;
             public int Giaban;
         }
-
-        [Route("api/calculate/{Giatien}/{MaCH}")]
+        //tinh cau hinh phu hop voi gia tien
+        [Route("{Giatien}/{MaCH}")]
         public IList<string> GetList(int Giatien, string MaCH)
         {
             IList<CHPCtemp> lstCHPC = new List<CHPCtemp>();
@@ -284,6 +284,7 @@ namespace BuildPC.Controllers
 
         }
 
+        //lay ten cac thanh phan cua 1 cau hinh
         [HttpPost]
         public string PostName(CHPCtemp CH)
         {
@@ -312,8 +313,9 @@ namespace BuildPC.Controllers
             return Name;
         }
 
+        //tinh tong gia ban cua 1 cau hinh
         [HttpPost]
-        [Route("api/calculate/postgia")]
+        [Route("postgia")]
         public int PostGia(CHPCtemp CH)
         {
             GPU gpu = new GPU();
@@ -341,9 +343,10 @@ namespace BuildPC.Controllers
             return gia;
         }
 
+        //kiem tra xem cpu va gpu co phu hop hay khong
         [HttpGet]
-        [Route("api/calculate/check/{MaCPU}/{MaGPU}")]
-        public bool Check(string MaCPU, string MaGPU)
+        [Route("checkcg/{MaCPU}/{MaGPU}")]
+        public int CheckCG(string MaCPU, string MaGPU)
         {
             GPU gpu = new GPU();
             gpu = new Controllers.GPUController().GetByID(MaGPU);
@@ -352,9 +355,123 @@ namespace BuildPC.Controllers
             cpu = new Controllers.CPUController().GetByID(MaCPU);
 
             if (cpu.Diem <= gpu.Diem + 1000 && cpu.Diem >= gpu.Diem - 500)
+                return 0;
+            else
+            {
+                if (cpu.Diem < gpu.Diem)
+                    return 1;
+                else
+                    return 2;
+            }
+        }
+
+        //kiem tra xem cpu va mainboard co phu hop hay khong
+        [HttpGet]
+        [Route("checkcm/{MaCPU}/{MaMain}")]
+        public bool CheckCM(string MaCPU, string MaMain)
+        {
+            Mainboard main = new Mainboard();
+            main = new Controllers.MainboardController().GetByID(MaMain);
+
+            CPU cpu = new CPU();
+            cpu = new Controllers.CPUController().GetByID(MaCPU);
+
+            if (cpu.Socket == main.Socket)
                 return true;
             else
                 return false;
+        }
+
+        //kiem tra xem gpu va mainboard co phu hop hay khong
+        [HttpGet]
+        [Route("checkgm/{MaGPU}/{MaMain}")]
+        public bool CheckGM(string MaGPU, string MaMain)
+        {
+            GPU gpu = new GPU();
+            gpu = new Controllers.GPUController().GetByID(MaGPU);
+
+            Mainboard main = new Mainboard();
+            main = new Controllers.MainboardController().GetByID(MaMain);
+
+            if (gpu.PCI == main.PCI)
+                return true;
+            else
+                return false;
+        }
+
+        //kiem tra xem ram va mainboard co phu hop hay khong
+        [HttpGet]
+        [Route("checkrm/{MaRam}/{MaMain}")]
+        public bool CheckRM(string MaRam, string MaMain)
+        {
+            RAM ram = new RAM();
+            ram = new Controllers.RAMController().GetByID(MaRam);
+
+            Mainboard main = new Mainboard();
+            main = new Controllers.MainboardController().GetByID(MaMain);
+
+            if (ram.LoaiRam == main.LoaiRamToiDa)
+                return true;
+            else
+                return false;
+        }
+
+        //nang cap cau hinh dua vao nhu cau cua nguoi dung
+        [HttpPost]
+        [Route("update/{Giatien}/{Nhucau}")]
+        public IList<string> Update(CHPCtemp CH, string Giatien, string Nhucau)
+        {
+            GPU gpu = new GPU();
+            gpu = new Controllers.GPUController().GetByID(CH.MaGPU);
+
+            CPU cpu = new CPU();
+            cpu = new Controllers.CPUController().GetByID(CH.MaCPU);
+
+            Mainboard main = new Controllers.MainboardController().GetByID(CH.MaMain);
+
+            RAM ram = new Controllers.RAMController().GetByID(CH.MaRam);
+
+            int Tien = int.Parse(Giatien);
+
+            if(Nhucau.Equals("CPU") == true)
+            {
+                IList<CPU> lstCPU = new List<CPU>();
+                IList<string> lstCPUResult = new List<string>();
+                lstCPU = new CPUController().GetListUpdate(cpu.Diem, gpu.Diem, Tien);
+                for(int i = 0; i< lstCPU.Count(); i++)
+                {
+                    if (lstCPU[i].Socket == main.Socket)
+                        lstCPUResult.Add(lstCPU[i].MaCPU);
+                }
+                return lstCPUResult;
+            }
+            else
+            {
+                if(Nhucau.Equals("GPU") == true)
+                {
+                    IList<GPU> lstGPU = new List<GPU>();
+                    IList<string> lstGPUResult = new List<string>();
+                    lstGPU = new GPUController().GetListUpdate(gpu.Diem, Tien);
+                    for (int i = 0; i < lstGPU.Count(); i++)
+                    {
+                        if (lstGPU[i].PCI == main.PCI)
+                            lstGPUResult.Add(lstGPU[i].MaGPU);
+                    }
+                    return lstGPUResult;
+                }
+                else
+                {
+                    IList<RAM> lstRAM = new List<RAM>();
+                    IList<string> lstRAMResult = new List<string>();
+                    lstRAM = new RAMController().GetListUpdate(Tien, ram.DungLuong,ram.LoaiRam);
+                    for (int i = 0; i < lstRAM.Count(); i++)
+                    {
+                        if (lstRAM[i].LoaiRam == main.LoaiRamToiDa)
+                            lstRAMResult.Add(lstRAM[i].MaRam);
+                    }
+                    return lstRAMResult;
+                }
+            }
         }
     }
 }

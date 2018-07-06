@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "CheckCG";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/FunctionCheckCG.js"></script>
+<h3 style="color:darkblue; font-weight:bold">Kiểm tra CPU và GPU</h3>
+    <div class="dropdown">
+
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            CHỌN LOẠI KIỂM TRA
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="@Url.Action("Check","Home")">Check PC</a></li>
+            <li><a href="@Url.Action("CheckRM","Home")">Ram vs Mainboard</a></li>
+            <li><a href="@Url.Action("CheckCM","Home")">CPU vs Mainboard</a></li>
+            <li><a href="@Url.Action("CheckGM","Home")">GPU vs Mainboard</a></li>
+            <li><a href="@Url.Action("CheckCG","Home")">CPU vs GPU</a></li>
+        </ul>
+    </div>
+    <br />
+
+    <p>CPU:</p>
+    <input list="lstcpu" id="cpu" onclick="Test(this)">
+    <datalist id="lstcpu"></datalist>
+    <p>GPU:</p>
+    <input list="lstgpu" id="gpu" onclick="Test(this)">
+    <datalist id="lstgpu"></datalist>
+    <hr />
+    <button onclick="CheckCG()">Check</button>

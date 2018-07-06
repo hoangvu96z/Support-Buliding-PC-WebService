@@ -20,17 +20,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <p class="navbar-brand">
                         QUẢN LÝ
-
-                    </a>
+                    </p>
                 </div>
 
                 <div class="notifications-wrapper">
                     <ul class="nav">
                         <li class="dropdown">
                             <ul class="list-group list-group-flush">
-                                <a href="#"><li class="list-group-item"> RAM</li></a>
+                                <a href="@Url.Action("Quanly","Home")"><li class="list-group-item"> RAM</li></a>
                                 <a href="@Url.Action("QLCPU","Home")"><li class="list-group-item"> CPU</li></a>
                                 <a href="@Url.Action("QLGPU","Home")"><li class="list-group-item"> GPU</li></a>
                                 <a href="@Url.Action("QLHDD","Home")"><li class="list-group-item"> HDD</li></a>
@@ -69,15 +68,15 @@
                                     <table id="mytable" class="table table-bordred table-striped">
 
                                         <thead>
-                                        <th>Model</th>
-                                        <th>LoaiRam</th>
-                                        <th>TocDoBus</th>
-                                        <th>DungLuong</th>
-                                        <th>HangSX</th>
-                                        <th>Giaban</th>
-                                        <th>Diem</th>
-                                        <th>DanhGia</th>
-                                        <th>Ảnh</th>
+                                            <th>Model</th>
+                                            <th>LoaiRam</th>
+                                            <th>TocDoBus</th>
+                                            <th>DungLuong</th>
+                                            <th>HangSX</th>
+                                            <th>Giaban</th>
+                                            <th>Diem</th>
+                                            <th>DanhGia</th>
+                                            <th>Ảnh</th>
                                         </thead>
                                         <tbody id="dispRam" name="ram"></tbody>
                                     </table>

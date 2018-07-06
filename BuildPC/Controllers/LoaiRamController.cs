@@ -17,7 +17,7 @@ namespace BuildPC.Controllers
           DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<LoaiRam> GetAllProduct()
+        public IList<LoaiRam> GetAllProduct()
         {
             IList<LoaiRam> proList = new List<LoaiRam>();
             var query = (from prods in context.LoaiRams select prods).ToList();
@@ -33,7 +33,7 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        public IEnumerable<LoaiRam> GetByID(string id)
+        public IList<LoaiRam> GetByID(string id)
         {
             IList<LoaiRam> proList = new List<LoaiRam>();
             var query = (from prods in context.LoaiRams where prods.MaLoaiRam == id select prods).ToList();

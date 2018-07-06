@@ -1,5 +1,4 @@
-﻿$(document).ready(function ()
-{
+﻿$(document).ready(function () {
     $("#Giatien").keyup(function () {
         this.value = PriceFormat(this);
     });
@@ -20,16 +19,17 @@ function chonloai() {
             rowsct += '<option value=' + val.CHToiThieu + ' data-KK=' + val.CHKhuyenNghi + ' >' + val.TenPM + '</option>';
         });
         $('#dispten').html(rowsct);
-        document.getElementById("hienthikhac1").innerHTML = "";
-        document.getElementById("hienthikhac2").innerHTML = "";
-        document.getElementById("hienthikhac3").innerHTML = "";
-        document.getElementById("hienthikhac4").innerHTML = "";
-        document.getElementById("hienthikhac5").innerHTML = "";
-        document.getElementById("hienthikhac6").innerHTML = "";
-        document.getElementById("hienthikhac7").innerHTML = "";
-        document.getElementById("hienthikhac8").innerHTML = "";
-        document.getElementById("hienthikhac9").innerHTML = "";
-        document.getElementById("hienthikhac10").innerHTML = "";
+        //document.getElementById("hienthikhac1").innerHTML = "";
+        //document.getElementById("hienthikhac2").innerHTML = "";
+        //document.getElementById("hienthikhac3").innerHTML = "";
+        //document.getElementById("hienthikhac4").innerHTML = "";
+        //document.getElementById("hienthikhac5").innerHTML = "";
+        //document.getElementById("hienthikhac6").innerHTML = "";
+        //document.getElementById("hienthikhac7").innerHTML = "";
+        //document.getElementById("hienthikhac8").innerHTML = "";
+        //document.getElementById("hienthikhac9").innerHTML = "";
+        //document.getElementById("hienthikhac10").innerHTML = "";
+
         document.getElementById("hienthikhac").innerHTML = "";
     });
 }
@@ -43,13 +43,14 @@ function chongame() {
     var sel = document.getElementById('dispten');
     var selected = sel.options[sel.selectedIndex];
     var MaCHKK = selected.getAttribute('data-KK');
-
+    document.getElementById("hienthikhac").innerHTML = "<center> <img src='https://loading.io/spinners/ellipsis/lg.discuss-ellipsis-preloader.gif' height='128' width='128'> </center>";
     var result = "";
     var i = 1;
     var GiaCHTT = getGiaCH(chon);
     var GiaCHKK = getGiaCH(MaCHKK);
     if (Giatien < GiaCHTT) {
         alert("Bạn không đủ tiền để xây dựng PC cho nhu cầu này.");
+        document.getElementById("hienthikhac").innerHTML = "";
     }
     else {
         if (Giatien > GiaCHKK)
@@ -59,8 +60,7 @@ function chongame() {
                 var Name = new Array();
                 Name = val.split('|');
                 var Giaban = Format(Name[9].toString(), "");
-
-                result += '<h2>Cấu hình ' + i + ':</h2><p>Mainboard:' + Name[2] + '</p><p>GPU:' + Name[0] + '</p><p>CPU:' + Name[1] + '</p><p>Ram:' + Name[3] + '</p><p>HDD:' + Name[5] + '</p><p>Nguồn:' + Name[7] + '</p><p>CasePC:' + Name[8] + '</p><p>Giá bán: ' + Giaban + '</p></br></br>';
+                result += '  <li class="list-group-item"><h4 style="color:"#00ff00">Cấu hình ' + i + ':</h4><p>Mainboard:' + Name[2] + '</p><p>GPU:' + Name[0] + '</p><p>CPU:' + Name[1] + '</p><p>Ram:' + Name[3] + '</p><p>HDD:' + Name[5] + '</p><p>Nguồn:' + Name[7] + '</p><p>CasePC:' + Name[8] + '</p><h4>Giá bán: ' + Giaban + '</h4></li>';
                 $('#hienthikhac').html(result);
                 i++;
             });
@@ -68,21 +68,19 @@ function chongame() {
     }
 }
 
-function PriceFormat(obj)
-{
+function PriceFormat(obj) {
     var Chuoi = obj.value;
-    Chuoi = Chuoi.replace(/,/g,'');
+    Chuoi = Chuoi.replace(/,/g, '');
     if (Chuoi.length > 3) {
         var Money = Format(Chuoi, '');
         return Money;
     }
     else
         return Chuoi;
-    
+
 }
 
-function Format(Chuoi,result)
-{
+function Format(Chuoi, result) {
     while (Chuoi.length > 3) {
         result = ',' + Chuoi.substr(Chuoi.length - 3, Chuoi.length - 1) + result;
         Chuoi = Chuoi.substr(0, Chuoi.length - 3);

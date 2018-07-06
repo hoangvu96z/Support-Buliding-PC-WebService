@@ -12,12 +12,13 @@ using BuildPC.Models;
 
 namespace BuildPC.Controllers
 {
+    [RoutePrefix("api/nguon")]
     public class NguonController : ApiController
     {
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<Nguon> GetAllProduct()
+        public IList<Nguon> GetAllProduct()
         {
             IList<Nguon> proList = new List<Nguon>();
             var query = (from prods in context.Nguons select prods).ToList();
@@ -111,7 +112,7 @@ namespace BuildPC.Controllers
         }
 
         [HttpPost]
-        [Route("api/nguon/delete/{MaNguon}")]
+        [Route("delete/{MaNguon}")]
         public void Delete(string MaNguon)
         {
             if (MaNguon == null)
@@ -133,9 +134,9 @@ namespace BuildPC.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/nguon/sort/{Price1:int}/{Price2:int}")]
+        [Route("sort/{Price1:int}/{Price2:int}")]
         [HttpGet]
-        public IEnumerable<Nguon> Sort(int Price1, int Price2)
+        public IList<Nguon> Sort(int Price1, int Price2)
         {
             List<Nguon> lstNguon = context.Nguons.ToList();
             List<Nguon> lstNguonNeed = new List<Nguon>();
@@ -161,9 +162,9 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        [Route("api/nguon/search/{NAME}")]
+        [Route("search/{NAME}")]
         [HttpGet]
-        public IEnumerable<Nguon> Search(string NAME)
+        public IList<Nguon> Search(string NAME)
         {
             List<Nguon> lstNguon = new List<Nguon>();
             lstNguon = context.Nguons.SqlQuery($"Select * From Nguon Where Model like '%{NAME}%'").ToList();

@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     $.ajax({
-        url: 'http://doancn.azurewebsites.net/api/cpu/',
+        url: 'http://doancn.azurewebsites.net/api/cpu',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

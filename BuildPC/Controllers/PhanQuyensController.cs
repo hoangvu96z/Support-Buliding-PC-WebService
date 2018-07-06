@@ -17,7 +17,7 @@ namespace BuildPC.Controllers
         DOANCNEntities context = new DOANCNEntities();
         //DBProductDataContext context = new DBProductDataContext();
         // GET api/values
-        public IEnumerable<PhanQuyen> GetAllProduct()
+        public IList<PhanQuyen> GetAllProduct()
         {
             IList<PhanQuyen> proList = new List<PhanQuyen>();
             var query = (from prods in context.PhanQuyens select prods).ToList();
@@ -35,7 +35,7 @@ namespace BuildPC.Controllers
             return proList;
         }
 
-        public IEnumerable<PhanQuyen> GetByID(string id)
+        public IList<PhanQuyen> GetByID(string id)
         {
             IList<PhanQuyen> proList = new List<PhanQuyen>();
             var query = (from prods in context.PhanQuyens where prods.MaPQ == id select prods).ToList();
